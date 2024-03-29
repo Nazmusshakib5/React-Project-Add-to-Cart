@@ -1,8 +1,13 @@
+import AppNavBar from "./AppNavBar";
+import Footer from "./Footer";
 
-const MasterLayout = () => {
+
+const MasterLayout = (props) => {
     return (
         <div>
-            <h1>master layout</h1>
+            <AppNavBar/>
+            {props.children}
+            <Footer/>
         </div>
     );
 };

@@ -1,9 +1,9 @@
 
 const LoginPage = () => {
     return (
-        <div>
+        <MasterLayout>
             <h1>Log in page</h1>
-        </div>
+        </MasterLayout>
     );
 };
 

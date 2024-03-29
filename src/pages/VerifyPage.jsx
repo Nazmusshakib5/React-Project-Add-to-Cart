@@ -1,9 +1,10 @@
+import MasterLayout from "../components/MasterLayout";
 
 const VerifyPage = () => {
     return (
-        <div>
+        <MasterLayout>
             <h1>Verify Page</h1>
-        </div>
+        </MasterLayout>
     );
 };
 
