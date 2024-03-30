@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 const MasterLayout = (props) => {
     return (
-        <div>
+        <div className="bg-light">
             <AppNavBar/>
             {props.children}
             <Footer/>

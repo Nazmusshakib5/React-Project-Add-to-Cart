@@ -1,10 +1,11 @@
 import Footer from "../components/Footer";
 import MasterLayout from "../components/MasterLayout";
+import ProductList from "../components/ProductList";
 
 const ProductListPage = () => {
     return (
         <MasterLayout>
-            <h1>Product List page</h1>
+            <ProductList/>
         </MasterLayout>
     );
 };

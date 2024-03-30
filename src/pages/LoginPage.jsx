@@ -1,3 +1,4 @@
+import MasterLayout from "../components/MasterLayout";
 
 const LoginPage = () => {
     return (
