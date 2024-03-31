@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import Helper from "../utility/helper";
 import FullScreenLoader from "./FullScreenLoader";
 import toast from "react-hot-toast";
+//remove the line below
+import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
     const [products,setProducts]=useState(null);
     const [refresh,setRefresh]=useState(false);
+    //remove the line below
+    const navigate=useNavigate();
 
     useEffect(()=>{
         (async()=>{
@@ -32,7 +36,9 @@ const ProductList = () => {
             }
 
         }catch(e){
-            Helper.unauthorized(e.response.status)
+            // Helper.unauthorized(e.response.status)
+            //remove the line below
+            navigate('/login');
         }
 
     }

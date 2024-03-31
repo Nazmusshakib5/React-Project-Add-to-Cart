@@ -16,7 +16,6 @@ const VerifyForm = () => {
         if(Helper.isEmpty(OTP)){
             toast.error('OTP Required')
         }else{
-            console.log('first ok')
             setSubmit(true)
             let res=await axios.post(`${Helper.API_BASE}/verify-login`,{UserEmail:email,OTP:OTP})
             setSubmit(false);

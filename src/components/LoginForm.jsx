@@ -8,8 +8,14 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
 
     const [submit,setSubmit]=useState(false);
-    const [delay,setDelay]=useState(false);
     const navigate=useNavigate();
+
+    const handleNavigation = () => {
+        // Navigate to '/verify' after a delay
+        setTimeout(() => {
+        navigate('/verify');
+        }, 2000); // Delay of 2 seconds (2000 milliseconds)
+        };
 
 
     const logInFormSubmit=async(e)=>{
@@ -25,7 +31,8 @@ const LoginForm = () => {
             if(res.data['msg']=='success'){
                 sessionStorage.setItem('email',email);
                 toast.success(res.data['data']);
-                navigate('/verify');
+                // navigate('/verify');
+                handleNavigation();
             }
             else{
                 toast.error('Login Failed')
