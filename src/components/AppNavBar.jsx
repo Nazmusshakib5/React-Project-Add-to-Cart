@@ -1,6 +1,6 @@
 import { Navbar,Nav,Container,Button } from "react-bootstrap";
 import Helper from "../utility/helper";
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 import logo from '../assets/images/logo.svg'
 
 const AppNavBar = () => {
@@ -26,8 +26,8 @@ const AppNavBar = () => {
             </Nav>
                 {
                     Helper.isLogin()?(<Button className="btn btn-danger px-4 py-2 fs-5" >Log Out</Button>):
-                    (<Button className="btn btn-danger px-4 py-2 fs-5" >Log In</Button>)
-                }
+                    (<Link className="btn btn-danger px-4 py-2 fs-5" to='/login'>Log In</Link>)
+                } 
         </Navbar.Collapse>
         </Container>
     </Navbar>
