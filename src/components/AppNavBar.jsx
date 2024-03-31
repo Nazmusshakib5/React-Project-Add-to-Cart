@@ -4,6 +4,10 @@ import {NavLink,Link} from 'react-router-dom';
 import logo from '../assets/images/logo.svg'
 
 const AppNavBar = () => {
+        const logoutHandler=()=>{
+            sessionStorage.clear();
+            window.location.href='/';
+        }
     return (
         <Navbar expand="lg" className="bg-white px-2 shadow-sm">
         <Container fluid>
@@ -25,7 +29,7 @@ const AppNavBar = () => {
             {/* using NavLink from  react router dom */}
             </Nav>
                 {
-                    Helper.isLogin()?(<Button className="btn btn-danger px-4 py-2 fs-5" >Log Out</Button>):
+                    Helper.isLogin()?(<Button className="btn btn-danger px-4 py-2 fs-5" onClick={logoutHandler}>Log Out</Button>):
                     (<Link className="btn btn-danger px-4 py-2 fs-5" to='/login'>Log In</Link>)
                 } 
         </Navbar.Collapse>

@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Helper from "../utility/helper";
 import FullScreenLoader from "./FullScreenLoader";
+import toast from "react-hot-toast";
 
 const ProductList = () => {
     const [products,setProducts]=useState(null);
-    const [refresh,setRefresh]=useState([]);
+    const [refresh,setRefresh]=useState(false);
 
     useEffect(()=>{
         (async()=>{
@@ -19,9 +20,26 @@ const ProductList = () => {
         setProducts(productLists);
     }
 
+    const addToCartBtn= async(id)=>{
+        try{
+            setRefresh(true)
+            let res=await axios.get(`${Helper.API_BASE}/create-cart/${id}`,Helper.addHeader());
+            setRefresh(false)
+            if(res.data['msg']==='success'){
+                toast.success('Added to Cart')
+            }else{
+                toast.error('Failed to add')
+            }
+
+        }catch(e){
+            Helper.unauthorized(e.response.status)
+        }
+
+    }
+
     return (
         <div>
-            {products==null ? (<FullScreenLoader/>):(
+            {products==null || refresh ? (<FullScreenLoader/>):(
                 <div className="container">
                     <div className="row mt-3">
                     {products.map(item => <div className="col-md-4 mb-4" key={item.id}>
@@ -30,6 +48,7 @@ const ProductList = () => {
                                 <h5>Price :{item.discount?(<span><strike className='me-2'>{item.price} </strike><span>{
                                     item.discount_price}</span></span>):(item.price)}</h5>
                                 <h3>{item.title}</h3>
+                                <button onClick={()=>{addToCartBtn(item['id'])}} className="btn btn-outline-danger mt-2">Add to Cart</button>
                             </div>
                     </div>)}
                     </div>
